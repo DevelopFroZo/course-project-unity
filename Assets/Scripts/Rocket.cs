@@ -76,25 +76,24 @@ public class Rocket : MonoBehaviour
             RotationControl();
             EngineControl();
         }
+    }
 
+    void maybeDestroyFuel()
+    {
         Vector3 start = gameObject.transform.position;
-        Vector3 dir = transform.TransformDirection(Vector3.down) * 10;
-
-        // print( gameObject.transform.rotation );
-
+        Vector3 dir = transform.TransformDirection( Vector3.down ) * 10;
         RaycastHit hit;
 
-        if( Physics.Raycast(start, dir, out hit) && hit.collider.gameObject.tag == "Fuel" ) 
+        if( Physics.Raycast( start, dir, out hit ) && hit.collider.gameObject.tag == "Fuel" ) 
         {
             Vector3 pos = gameObject.transform.position - hit.collider.gameObject.transform.position;
-            
-            if( pos.magnitude < 5){
+
+            if( pos.magnitude < 5 ){
                 Destroy( hit.collider.gameObject );
             }
         }
-        
+
         Vector3 forward = transform.TransformDirection(Vector3.down) * 1;
-        Debug.DrawRay(transform.position, forward, Color.green);
     }
 
     void EngineControl()
@@ -115,6 +114,7 @@ public class Rocket : MonoBehaviour
 
             assLight.enabled = true;
 			engineOnParticles.Play();
+            maybeDestroyFuel();
 		}
 		else{
 		// 	audioSource.Pause();
