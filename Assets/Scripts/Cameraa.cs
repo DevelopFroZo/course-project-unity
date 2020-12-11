@@ -9,7 +9,7 @@ public class Cameraa : MonoBehaviour
     public Text fuelText;
 
     void setFuelText(){
-        fuelText.text = Mathf.Round( rocket.getFuel() ).ToString();
+        fuelText.text = "Fuel: " + Mathf.Round( rocket.getFuel() ).ToString();
     }
 
     void Start()
