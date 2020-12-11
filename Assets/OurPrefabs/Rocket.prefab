@@ -357,6 +357,7 @@ MonoBehaviour:
   flySound: {fileID: 8300000, guid: b64fe6643f6738d4c8c9dd9818469055, type: 3}
   deathSound: {fileID: 8300000, guid: df72cd149aa2b6643946c02d38bea5d7, type: 3}
   doneSound: {fileID: 8300000, guid: 935ab548cb6bc074a973b776646cb606, type: 3}
+  fuelSound: {fileID: 8300000, guid: 604a1c068a148ee42810aa05dcdc2923, type: 3}
   fuel: 250
   rotationSpeed: 100
   flySpeed: 1000

@@ -18,6 +18,7 @@ public class Fuel : MonoBehaviour
         if( obj.tag == "Rocket" ){
             this.GetComponent<CapsuleCollider>().enabled = false;
             Destroy( this.gameObject );
+            rocket.PlayAddFuelSound();
             ( (Rocket) obj.GetComponent( typeof( Rocket ) ) ).addFuel( fuelCapacity );
         }
 	}
