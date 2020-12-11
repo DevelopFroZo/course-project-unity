@@ -9,7 +9,8 @@ public class Fuel : MonoBehaviour
     public Transform tr;
     public Rocket rocket;
 
-    void OnTriggerEnter( Collider collider ){
+    void OnTriggerEnter( Collider collider )
+    {
         if( rocket.getStringState() != "Playing" ) return;
 
         GameObject obj = collider.gameObject.transform.parent.gameObject;

@@ -33,19 +33,23 @@ public class Rocket : MonoBehaviour
         return state.ToString();
     }
 
-    public float getFuel(){
+    public float getFuel()
+    {
         return fuel;
     }
 
-    public void addFuel( float fuel_ ){
+    public void addFuel( float fuel_ )
+    {
         fuel += fuel_;
     }
 
-    void Restart(){
-        SceneManager.LoadScene( "Level 1" );
+    void Restart()
+    {
+        SceneManager.LoadScene( Parameters.GetCurrentLevel() );
     }
 
-    void Death(){
+    void Death()
+    {
         state = State.End;
         engineOnParticles.Stop();
         audioSource.Stop();
@@ -55,7 +59,13 @@ public class Rocket : MonoBehaviour
         Invoke( "Restart", 2f );
     }
 
-    void Done(){
+    void NextLevel()
+    {
+        SceneManager.LoadScene( Parameters.GetNextLevel() );
+    }
+
+    void Done()
+    {
         state = State.End;
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
         engineOnParticles.Stop();
@@ -63,6 +73,7 @@ public class Rocket : MonoBehaviour
         audioSource.PlayOneShot( doneSound );
         assLight.enabled = false;
         doneParticles.Play();
+        Invoke( "NextLevel", 2f );
     }
 
     void OnCollisionEnter( Collision collision )
@@ -82,11 +93,19 @@ public class Rocket : MonoBehaviour
 		}
     }
 
+    void Start()
+    {
+        audioSource.volume = Parameters.GetVolume();
+        // print( SceneManager.GetActiveScene().name );
+        Parameters.SetScene( SceneManager.GetActiveScene().name );
+    }
+
     void Update()
     {
         if( state == State.Playing ){
             RotationControl();
             EngineControl();
+            MenuControl();
         }
     }
 
@@ -151,4 +170,11 @@ public class Rocket : MonoBehaviour
 
 		rb.freezeRotation = false;
 	}
+
+    void MenuControl()
+    {
+        if( Input.GetKey( KeyCode.Escape ) ){
+            SceneManager.LoadScene( "Menu" );
+        }
+    }
 }
