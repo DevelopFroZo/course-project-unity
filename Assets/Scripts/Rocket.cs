@@ -11,13 +11,21 @@ public class Rocket : MonoBehaviour
     };
 
     public Rigidbody rb;
+    
     public Light assLight;
+    
     public ParticleSystem engineOnParticles;
     public ParticleSystem rocketDeathParticles;
     public ParticleSystem doneParticles;
-    public float fuel = 250;
+    
+    public AudioSource audioSource;
+    public AudioClip flySound;
+    public AudioClip deathSound;
+    public AudioClip doneSound;
 
     private State state = State.Playing;
+    
+    public float fuel = 250;
     public float rotationSpeed = 100f;
     public float flySpeed = 100f;
 
@@ -40,6 +48,8 @@ public class Rocket : MonoBehaviour
     void Death(){
         state = State.End;
         engineOnParticles.Stop();
+        audioSource.Stop();
+        audioSource.PlayOneShot( deathSound );
         assLight.enabled = false;
         rocketDeathParticles.Play();
         Invoke( "Restart", 2f );
@@ -49,6 +59,8 @@ public class Rocket : MonoBehaviour
         state = State.End;
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY;
         engineOnParticles.Stop();
+        audioSource.Stop();
+        audioSource.PlayOneShot( doneSound );
         assLight.enabled = false;
         doneParticles.Play();
     }
@@ -108,16 +120,16 @@ public class Rocket : MonoBehaviour
 			fuel -= 0.1f;
 			rb.AddRelativeForce( Vector3.up * flySpeed * Time.deltaTime );
 			
-            // if( audioSource.isPlaying == false ){
-            //     audioSource.PlayOneShot( flySound );
-            // }
+            if( audioSource.isPlaying == false ){
+                audioSource.PlayOneShot( flySound );
+            }
 
             assLight.enabled = true;
 			engineOnParticles.Play();
             maybeDestroyFuel();
 		}
 		else{
-		// 	audioSource.Pause();
+			audioSource.Pause();
 			engineOnParticles.Stop();
             assLight.enabled = false;
 		}
