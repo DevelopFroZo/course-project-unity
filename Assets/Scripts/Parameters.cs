@@ -5,7 +5,7 @@ using System;
 
 public static class Parameters
 {
-    private static string[] scenes = new string[] { "Level 1", "Level 2", "Level 3" };
+    private static string[] scenes = new string[] { "Level 1", "Level 2", "Level 3", "Level 4" };
     private static int currentLevel = 0;
     private static float volume = 1;
 
