@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    public Slider slider;
+    public Slider SFXSlider;
+    public Slider MusicSlider;
 
     void Start()
     {
-        slider.value = Parameters.GetVolume();
+        SFXSlider.value = Parameters.GetSfxVolume();
+        MusicSlider.value = Parameters.GetMusicVolume();
     }
 
     public void PlayButtonClick()
@@ -24,8 +26,13 @@ public class Menu : MonoBehaviour
         print( "Exit" );
     }
 
-    public void ChangeVolume( float volume )
+    public void ChangeSfxVolume( float volume )
     {
-        Parameters.SetVolume( volume );
+        Parameters.SetSfxVolume( volume );
+    }
+
+    public void ChangeMusicVolume( float volume )
+    {
+        Parameters.SetMusicVolume( volume );
     }
 }

@@ -101,8 +101,7 @@ public class Rocket : MonoBehaviour
 
     void Start()
     {
-        audioSource.volume = Parameters.GetVolume();
-        // print( SceneManager.GetActiveScene().name );
+        audioSource.volume = Parameters.GetSfxVolume();
         Parameters.SetScene( SceneManager.GetActiveScene().name );
     }
 

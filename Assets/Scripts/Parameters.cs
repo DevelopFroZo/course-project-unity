@@ -7,16 +7,27 @@ public static class Parameters
 {
     private static string[] scenes = new string[] { "Level 1", "Level 2", "Level 3", "Level 4" };
     private static int currentLevel = 0;
-    private static float volume = 1;
+    private static float SFXVolume = 1;
+    private static float MusicVolume = 1;
 
-    public static float GetVolume()
+    public static float GetSfxVolume()
     {
-        return volume;
+        return SFXVolume;
     }
 
-    public static void SetVolume( float volume_ )
+    public static void SetSfxVolume( float SFXVolume_ )
     {
-        volume = volume_;
+        SFXVolume = SFXVolume_;
+    }
+
+    public static float GetMusicVolume()
+    {
+        return MusicVolume;
+    }
+
+    public static void SetMusicVolume( float MusicVolume_ )
+    {
+        MusicVolume = MusicVolume_;
     }
 
     public static void SetScene( string name )
