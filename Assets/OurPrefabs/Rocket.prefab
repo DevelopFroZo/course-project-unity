@@ -355,7 +355,7 @@ MonoBehaviour:
   doneParticles: {fileID: 7240124190496076156}
   audioSource: {fileID: -3890686923277828732}
   flySound: {fileID: 8300000, guid: b64fe6643f6738d4c8c9dd9818469055, type: 3}
-  deathSound: {fileID: 8300000, guid: fdb12ec108c78934e87fc9928b47c927, type: 3}
+  deathSound: {fileID: 8300000, guid: df72cd149aa2b6643946c02d38bea5d7, type: 3}
   doneSound: {fileID: 8300000, guid: 935ab548cb6bc074a973b776646cb606, type: 3}
   fuel: 250
   rotationSpeed: 100
