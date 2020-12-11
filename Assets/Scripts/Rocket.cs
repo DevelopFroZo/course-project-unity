@@ -22,6 +22,8 @@ public class Rocket : MonoBehaviour
     public AudioClip flySound;
     public AudioClip deathSound;
     public AudioClip doneSound;
+
+    public AudioSource fuelAudioSource;
     public AudioClip fuelSound;
 
     private State state = State.Playing;
@@ -61,7 +63,7 @@ public class Rocket : MonoBehaviour
     }
 
     public void PlayAddFuelSound(){
-        audioSource.PlayOneShot( fuelSound );        
+        fuelAudioSource.PlayOneShot( fuelSound );        
     }
 
 
