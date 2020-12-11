@@ -9,7 +9,7 @@ public class RotationObject : MonoBehaviour
     public float degreesZ = 0;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.Rotate(degreesX, degreesY, degreesZ, Space.Self);
     }
